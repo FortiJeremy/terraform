@@ -23,5 +23,8 @@ Outputs:
 The following outputs are configured by default:
 vpc 			- specifies the VPC ID of the created VPC
 pubrt			- specifies the Public Route Table ID
-
+public_subnet1	- specifies the Public Subnet ID in AZ[0]
+public_subnet2 	- specifies the Public Subnet ID in AZ[1]
+private_subnet1 - specifies the Private Subnet ID in AZ[0]
+private_subnet2 - specifies the Private Subnet ID in AZ[1]
 */

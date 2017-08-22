@@ -52,6 +52,9 @@ resource "aws_instance" "fgt_1a" {
     device_index = 1
   }
 }
+resource "aws_eip" "fgt_1a" {
+  network_interface = "${aws_network_interface.fgt_1_pub.id}"
+}
 
 # FortiGate 2 (AZ-2) ENIs:
 resource "aws_network_interface" "fgt_2_pub" {
@@ -86,6 +89,10 @@ resource "aws_instance" "fgt_2b" {
   }
 }
 
+resource "aws_eip" "fgt_2b" {
+  network_interface = "${aws_network_interface.fgt_2_pub.id}"
+}
+
 # Internal Subnet Route Tables
 resource "aws_route_table" "primary_private" {
   vpc_id = "${module.vpc_setup.vpc}"
@@ -117,9 +124,9 @@ resource "aws_route_table_association" "subnet1" {
   subnet_id = "${module.vpc_setup.private_subnet1}"
   route_table_id = "${aws_route_table.primary_private.id}"
 }
-resource "aws_route_table_association" "subnet1" {
+resource "aws_route_table_association" "subnet2" {
   subnet_id = "${module.vpc_setup.private_subnet2}"
-  route_table_id = "${aws_route_table.primary_private.id}"
+  route_table_id = "${aws_route_table.secondary_private.id}"
 }
 
 # SNS Topic for Cloudwatch + Lambda integration
