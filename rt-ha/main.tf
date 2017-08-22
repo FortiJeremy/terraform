@@ -44,7 +44,7 @@ resource "aws_lambda_function" "rt_mover" {
     filename = "./rt_mover.zip"
     function_name = "ftnt_rt_flip"
     role = "${aws_iam_role.ftnt_lambda_role.arn}"
-    handler = "route-tables.handler"
+    handler = "route-tables.do"
     runtime = "python2.7"
     source_code_hash = "${base64sha256(file("./rt_mover.zip"))}"
 

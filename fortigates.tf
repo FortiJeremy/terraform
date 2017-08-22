@@ -112,6 +112,16 @@ resource "aws_route_table" "secondary_private" {
   }
 }
 
+# Route Table Associations:
+resource "aws_route_table_association" "subnet1" {
+  subnet_id = "${module.vpc_setup.private_subnet1}"
+  route_table_id = "${aws_route_table.primary_private.id}"
+}
+resource "aws_route_table_association" "subnet1" {
+  subnet_id = "${module.vpc_setup.private_subnet2}"
+  route_table_id = "${aws_route_table.primary_private.id}"
+}
+
 # SNS Topic for Cloudwatch + Lambda integration
 resource "aws_sns_topic" "fgt_healthcheck" {
   name = "fgt-health"
