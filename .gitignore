@@ -1,4 +1,10 @@
+# Terraform Generated Files #
+#############################
 *.tfstate
 *.tfstate.backup
-*.terraform
+.terraform
+.terraform?
 .terraform.tfstate.lock.info
+
+#permit the 1 .zip deployment package#
+!rt_mover.zip
