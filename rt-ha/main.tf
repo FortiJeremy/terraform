@@ -52,7 +52,7 @@ resource "aws_lambda_function" "rt_mover" {
         variables {
             route_table_1 = "${var.subnet1}"
             route_table_2 = "${var.subnet2}"
-            aws_region = "${var.region}"
+            ha_region = "${var.region}"
         }
     }
 
